@@ -1,0 +1,90 @@
+{%  extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ formset.management_form }}
+                {% for form in formset %}
+                    {{form}}
+                    <hr>
+                {% endfor %}
+                <input type="submit" name="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="col-sm-9">
+      <div class="card card-body">
+        <h5>All Available Products</h5>
+      </div>
+      <div class="card card-body" style="overflow-y:auto;">
+        <table class="table">
+          <tr>
+            <th> </th>
+            <th>Product</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Best Seller</th>
+          </tr>
+
+          {% for i in products %}
+
+            <tr>
+              <td><img src="{{i.prod_img.url}}" width="50" height="50"></td>
+              <td>{{i.prod_name}}</td>
+              <td>{{i.prod_cat}}</td>
+              <td>{{i.prod_price}}</td>
+              <td>{{i.prod_qty}}</td>
+              <td>{{i.prod_bestSeller}}</td>
+            </tr>
+
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}

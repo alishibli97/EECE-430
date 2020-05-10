@@ -1,0 +1,17 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+  <h2>View Profile</h2>
+     <table>
+    <tr>
+
+       <p>  {{  id  }} {{  customer.cust_user  }}  {{  customer.cust_name  }}  {{  customer.cust_email  }} {{  customer.cust_location  }}
+             {{ customer.cust_phone }}   </p>
+
+    </tr>
+
+</table>
+   <a href="{% url 'user-page' %}"><button>Go Back to Main Page</button></a>
+
+
+{% endblock content %}

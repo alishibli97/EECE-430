@@ -1,0 +1,47 @@
+{% extends 'accounts/main.html' %}
+{% block title %}
+    Your Shopping Cart
+{% endblock %}
+
+
+{% block content %}
+
+
+<!--<body class="bookatour">-->
+    <div class="main">
+        <div class="row" style="margin-top: 25%;">
+            <div class="col-md-8">
+                <div class="accountform">
+                <h1 class="page-header"><b>Checkout</b></h1>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}<br>
+                    <label>
+                   <input name="delivery" onclick="document.getElementById('id_delivery').checked = !document.getElementById('id_delivery').checked;" type="checkbox"><span>I would like the order to be delivered to the address supplied above</span>
+                    </label>
+                    <br><br>
+                    <input type="submit" class="btn btn-primary" value="Submit order" style="display: inline-block;color: black; background-color: #cfeac8;opacity: 0.95; font-weight:bold;">
+                </form>
+                </div>
+            </div>
+
+            <div class="col-md-4 orderform" style="min-width: 200px;" >
+                <div class="page-header">
+                    Your Order
+                </div>
+                <ul class="list-group">
+                    {% for item in accounts %}
+                        <li class="list-group-item">
+                        {{ item.prod_qty }}x {{ item.prod_name }}
+                        <span>$ {{ item.order_totalPrice }}</span>
+                        </li>
+                    {% endfor %}
+
+                <li class="list-group-item active">Total Cost: $ {{ get total price??? }}</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

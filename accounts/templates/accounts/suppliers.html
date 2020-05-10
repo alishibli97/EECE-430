@@ -1,0 +1,38 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Suppliers</h5>
+				</div>
+				<button><a href="{% url 'create_supplier' %}">Add a new supplier</a></button>
+				<br>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th> </th>
+							<th>Name</th>
+							<th>Phone number</th>
+							<th>Email</th>
+							<th>Date Added</th>
+						</tr>
+
+						{% for i in suppliers %}
+
+							<tr>
+								<td> </td>
+								<td>{{i.supp_name}}</td>
+								<td>{{i.supp_phone}}</td>
+								<td>{{i.supp_email}}</td>
+								<td>{{i.supp_date_added}}</td>
+							</tr>
+
+						{% endfor %}
+					</table>
+				</div>
+			</div>
+		</div>
+
+{% endblock content %}
